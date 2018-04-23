@@ -1,0 +1,46 @@
+<div class="col-lg-8">
+  <%= form_for @case, html: { class: "card" } do |f| %>
+  <div class="card-body">
+    <h3 class="card-title">Edit Case</h3>
+    <div class="row">
+      <div class="col-sm-12 col-md-12">
+        <div class="form-group">
+          <label class="form-label">Contact</label>
+          <%= f.collection_select :contact_id, Contact.all, :id, :name, { include_blank: "Select a contact" }, { class: 'form-control custom-select'} %>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12">
+        <div class="form-group">
+          <label class="form-label">Name</label>
+          <%= f.text_field :name, class: 'form-control', placeholder: 'Case name' %>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-12">
+        <div class="form-group">
+          <label class="form-label">Description</label>
+          <%= f.text_area :description, class: 'form-control', placeholder: 'Case description' %>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <div class="form-group">
+          <label class="form-label">Assigned</label>
+          <%= f.collection_select :assigned_user_id, Person.all, :id, :first_name, { include_blank: "Select a user" }, { class: 'form-control custom-select'} %>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <div class="form-group">
+          <div class="form-label">State</div>
+          <%= f.label :state, class: "custom-switch", for: "state_all" do %>
+            <%= f.check_box :state, class: 'custom-switch-input', id: "state_all", checked: f.object.closed_at.present? %>
+            <span class="custom-switch-indicator"></span>
+            <span class="custom-switch-description">Case is closed</span>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-right">
+      <%= f.submit "Save case", class: 'btn btn-primary' %>
+    </div>
+  </div>
+  <% end %>
+</div>

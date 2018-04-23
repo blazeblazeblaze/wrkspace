@@ -1,0 +1,42 @@
+
+<% if cases.empty? %>
+  <div class="card-body">
+    <div class="alert alert-info" role="alert">
+      No cases have been assigned yet.
+      <%= link_to "Open one", new_case_path, class: "alert-link" %>.
+    </div>
+  </div>
+<% else %>
+  <table class="table card-table">
+    <thead>
+      <tr>
+        <th class="text-center w-1"><i class="far fa-user"></i></th>
+        <th>Name</th>
+        <th>Closed at</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% cases.each do |case_item| %>
+        <tr>
+          <td class="text-center">
+            <div class="avatar d-block" style="background-image: url(<%= Faker::Avatar.unique.image %>)"/>
+          </td>
+          <td><%= case_item.name %></td>
+          <td><%= pretty_date(case_item.closed_at) %></td>
+          <td>
+            <% if case_item.closed_at %>
+              <span class="badge badge-success">Closed</span>
+            <% else %>
+              <span class="badge badge-danger">Open</span>
+            <% end %>
+          </td>
+          <td class="text-right">
+            <%= link_to 'Manage', edit_case_path(case_item), class: 'btn btn-secondary btn-sm' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

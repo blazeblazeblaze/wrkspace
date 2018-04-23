@@ -1,0 +1,42 @@
+<div class="col-lg-8">
+  <%= form_for [:contacts, @person], html: { class: "card" } do |f| %>
+  <div class="card-body">
+    <h3 class="card-title">Edit Profile</h3>
+    <div class="row">
+      <div class="col-sm-6 col-md-2">
+        <div class="form-group">
+          <label class="form-label">Title</label>
+          <%= f.collection_select :title, %w(Mr Mrs Miss Ms Sir Dr Lady Lord), :to_s, :to_s, {}, {include_blank: true, class: 'form-control custom-select'} %>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-5">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <%= f.text_field :first_name, class: 'form-control', placeholder: 'First name' %>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-5">
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last name' %>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-6">
+        <div class="form-group">
+          <label class="form-label">Job Title</label>
+          <%= f.text_field :job_title, class: 'form-control', placeholder: 'Lead Accounting Associate' %>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="form-label">Company</label>
+          <%= f.collection_select :organization_id, @current_account.organizations, :id, :name, { include_blank: "Select a company" }, { class: 'form-control custom-select'} %>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer text-right">
+      <%= f.submit "Update profile", class: 'btn btn-primary' %>
+    </div>
+  </div>
+  <% end %>
+</div>

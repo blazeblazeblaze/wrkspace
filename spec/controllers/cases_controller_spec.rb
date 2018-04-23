@@ -18,7 +18,7 @@ describe CasesController do
     end
 
     it 'returns 200' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns the @cases' do
@@ -38,7 +38,7 @@ describe CasesController do
     end
 
     it 'returns 200' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns the @case' do
@@ -52,7 +52,7 @@ describe CasesController do
     end
 
     it 'returns 200' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns the @case' do

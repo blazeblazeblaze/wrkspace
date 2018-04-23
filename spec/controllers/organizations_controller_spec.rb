@@ -20,7 +20,7 @@ describe Contacts::OrganizationsController do
     end
 
     it 'returns 200' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns the @organizations' do
@@ -40,7 +40,7 @@ describe Contacts::OrganizationsController do
     end
 
     it 'returns 200' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns the @organization' do
@@ -56,7 +56,7 @@ describe Contacts::OrganizationsController do
     end
 
     it 'returns 200' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns the @organization' do
@@ -70,7 +70,7 @@ describe Contacts::OrganizationsController do
     end
 
     it 'returns 200' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns the @organization' do

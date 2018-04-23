@@ -20,7 +20,7 @@ describe Contacts::PeopleController do
     end
 
     it 'returns 200' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns the @people' do
@@ -40,7 +40,7 @@ describe Contacts::PeopleController do
     end
 
     it 'returns 200' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns the @person' do
@@ -56,7 +56,7 @@ describe Contacts::PeopleController do
     end
 
     it 'returns 200' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns the @person' do
@@ -70,7 +70,7 @@ describe Contacts::PeopleController do
     end
 
     it 'returns 200' do
-      expect(response).to be_success
+      expect(response).to be_successful
     end
 
     it 'assigns the @person' do

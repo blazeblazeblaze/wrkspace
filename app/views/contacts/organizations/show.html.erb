@@ -1,0 +1,58 @@
+<div class="container">
+  <div class="page-header">
+    <h1 class="page-title">
+      Organization
+    </h1>
+  </div>
+
+  <div class="row row-cards row-deck">
+    <div class="col-md-6 col-lg-4">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title"><%= @organization.name %></h3>
+          <div class="card-options">
+            <%= link_to "Edit", edit_contacts_organization_path(@organization), class: "btn btn-primary btn-sm" %>
+          </div>
+        </div>
+        <div class="card-body">
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">People at <%= @organization.name %></h3>
+        </div>
+        <div class="card-body o-auto" style="height: 15rem">
+          <ul class="list-unstyled list-separated">
+            <% @people.each do |person| %>
+            <li class="list-separated-item">
+              <div class="row align-items-center">
+                <div class="col-auto">
+                  <span class="avatar avatar-md d-block" style="background-image: url(<%= Faker::Avatar.unique.image %>)"></span>
+                </div>
+                <div class="col">
+                  <div>
+                    <%= link_to "#{person.first_name} #{person.last_name}", contacts_person_path(person) %>
+                  </div>
+                  <small class="d-block item-except text-sm text-muted h-1x"><%= person.job_title %></small>
+                </div>
+              </div>
+            </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="card">
+        <div class="card-header">
+          <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+              <a class="nav-link active">Cases</a>
+            </li>
+          </ul>
+        </div>
+        <%= render 'cases/cases', cases: @organization.cases %>
+      </div>
+    </div>
+  </div>
+</div>
