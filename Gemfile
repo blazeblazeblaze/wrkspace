@@ -9,6 +9,8 @@ end
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2'
 gem "bootsnap", ">= 1.1.0", require: false
+gem 'devise'
+gem 'devise_invitable', '~> 1.7.0'
 # Use postgresql as the database for Active Record
 gem 'searchlight'
 gem 'pg', '>= 0.18', '< 2.0'
@@ -36,7 +38,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
+gem 'virtus'
 group :test do
   gem 'simplecov', require: false
   gem 'shoulda-matchers', '~> 3.1'
@@ -56,6 +58,7 @@ group :development, :test do
 end
 
 group :development do
+  gem "letter_opener"
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
