@@ -1,17 +1,18 @@
 require 'rails_helper'
 
 describe OrganizationSearch do
-  let(:organization_record) { create(:organization) }
-  subject { described_class.new(search_params) }
+  let(:contact) { create(:contact) }
+  let(:organization_record) { create(:organization, contact: contact) }
+  let(:default_params) { { account_id: contact.account_id } }
+  subject { described_class.new(default_params.merge(search_params)) }
 
   describe '#results' do
     context 'when no search_attrs passed' do
-      let(:search_params) do
-        {}
-      end
+      let(:default_params) { {} }
+      let(:search_params) { {} }
 
-      it 'returns all records' do
-        expect(subject.results).to eq [organization_record]
+      it 'returns no records' do
+        expect(subject.results).to eq []
       end
     end
 

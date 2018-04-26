@@ -1,7 +1,6 @@
 FactoryBot.define do
   factory :person do
-    organization
-    first_name 'John'
-    last_name 'John'
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
   end
 end

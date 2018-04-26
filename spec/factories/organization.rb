@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :organization do
-    name 'Apple'
+    contact
+    name { Faker::Company.name }
   end
 end

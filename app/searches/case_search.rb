@@ -1,6 +1,8 @@
 class CaseSearch < Searchlight::Search
   def base_query
-    Case.all
+    Case
+      .joins(:contact)
+      .where(contacts: { account_id: options[:account_id] })
   end
 
   def search_name

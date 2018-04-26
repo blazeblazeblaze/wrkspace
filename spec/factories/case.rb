@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :case do
-    name 'John'
-    description 'Doe'
-    association :assigned_user, factory: :person
+    name { Faker::Company.bs }
+    description { Faker::Company.bs }
+    association :assigned_user, factory: :user
     association :contact, factory: :contact
   end
 end
