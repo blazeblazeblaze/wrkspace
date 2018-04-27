@@ -19,7 +19,7 @@ class Contacts::OrganizationsController < ApplicationController
     @organization = Organization.find(params[:id])
 
     if @organization.update(organization_params)
-      flash[:success] = 'Organization has been successfully updated.'
+      flash[:notice] = 'Organization has been successfully updated.'
       redirect_to contacts_organizations_path
     else
       render :edit
@@ -36,7 +36,7 @@ class Contacts::OrganizationsController < ApplicationController
     contact = current_account.contacts.build(contactable: @organization)
 
     if contact.save
-      flash[:success] = 'Organization has been successfully created.'
+      flash[:notice] = 'Organization has been successfully created.'
       redirect_to contacts_organizations_path
     else
       render :new

@@ -40,7 +40,7 @@ describe Admin::UsersController do
 
     describe 'POST create' do
       let(:user_params) { { email: 'foo@bar.com' } }
-      let(:errors) { double(messages: []) }
+      let(:errors) { double(full_messages: []) }
       let(:account_invitation_form) do
         instance_double(AccountInvitationForm, errors: errors)
       end
@@ -64,7 +64,7 @@ describe Admin::UsersController do
         let(:save_status) { false }
 
         it 'sets flash[:errors] with account_invitation_form object errors' do
-          expect(flash[:error]).to eq errors.messages
+          expect(flash[:alert]).to eq errors.full_messages.to_sentence
         end
 
         it 'renders new template' do
@@ -75,15 +75,15 @@ describe Admin::UsersController do
 
     describe 'PUT suspend' do
       let(:suspend_status) { true }
-      
+
       before do
         allow_any_instance_of(User).to receive(:suspend!) { suspend_status }
         put :suspend, params: { user_id: subject.current_user.id }
       end
 
       context 'when successfully suspeneded' do
-        it 'sets flash[:success]' do
-          expect(flash[:success]).to eq 'Successfully suspened this user!'
+        it 'sets flash[:notice]' do
+          expect(flash[:notice]).to eq 'Successfully suspened this user!'
         end
       end
 
@@ -91,7 +91,7 @@ describe Admin::UsersController do
         let(:suspend_status) { false }
 
         it 'sets flash[:errors]' do
-          expect(flash[:error]).to eq 'There was a problem with suspending this user.'
+          expect(flash[:alert]).to eq 'There was a problem with suspending this user.'
         end
       end
     end

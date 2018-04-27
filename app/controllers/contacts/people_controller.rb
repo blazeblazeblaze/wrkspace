@@ -22,7 +22,7 @@ class Contacts::PeopleController < ApplicationController
     @person = Person.find(params[:id])
 
     if @person.update(person_params)
-      flash[:success] = 'Contact has been successfully updated.'
+      flash[:notice] = 'Contact has been successfully updated.'
       redirect_to contacts_people_path
     else
       render :edit
@@ -35,7 +35,7 @@ class Contacts::PeopleController < ApplicationController
     contact = current_account.contacts.build(contactable: @person)
 
     if contact.save
-      flash[:success] = 'Contact has been successfully created.'
+      flash[:notice] = 'Contact has been successfully created.'
       redirect_to contacts_people_path
     else
       render :new

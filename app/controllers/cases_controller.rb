@@ -18,7 +18,7 @@ class CasesController < ApplicationController
     @case = Case.find(params[:id])
 
     if @case.update(case_params)
-      flash[:success] = 'Case has been successfully updated.'
+      flash[:notice] = 'Case has been successfully updated.'
       redirect_to cases_path
     else
       render :edit
@@ -29,7 +29,7 @@ class CasesController < ApplicationController
     @case = Case.new(case_params)
 
     if @case.save
-      flash[:success] = 'Case has been successfully created.'
+      flash[:notice] = 'Case has been successfully created.'
       redirect_to cases_path
     else
       render :new

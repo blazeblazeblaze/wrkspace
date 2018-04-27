@@ -12,10 +12,10 @@ module Admin
       @invitation_form = AccountInvitationForm.new(invitation_form_params)
 
       if @invitation_form.save
-        flash[:success] = 'Successfully invited new user!'
+        flash[:notice] = 'Successfully invited new user!'
         redirect_to admin_users_path
       else
-        flash[:error] = @invitation_form.errors.messages
+        flash[:alert] = @invitation_form.errors.full_messages.to_sentence
         render :new
       end
     end
@@ -24,9 +24,9 @@ module Admin
       @user = @users.find(params[:user_id])
 
       if @user.suspend!
-        flash[:success] = 'Successfully suspened this user!'
+        flash[:notice] = 'Successfully suspened this user!'
       else
-        flash[:error] = 'There was a problem with suspending this user.'
+        flash[:alert] = 'There was a problem with suspending this user.'
       end
 
       redirect_to admin_users_path
