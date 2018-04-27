@@ -21,17 +21,16 @@
                 <label class="form-label">Name</label>
                 <%= f.text_field :name, value: @search[:name], class: "form-control" %>
               </div>
+              <%= render 'forms/organization_select', f: f %>
+
               <div class="form-group">
-                <label class="form-label">Organization</label>
-                <%= f.collection_select :organization_id, @current_account.organizations, :id, :name, { include_blank: "Select a company", selected: @search[:organization_id] }, { class: 'form-control custom-select'} %>
-              </div>
-              <div class="form-group">
-                <label class="custom-switch">
-                  <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input">
+                <%= f.label :with_cases, class: 'custom-switch' do %>
+                  <%= f.check_box :with_cases, class: 'custom-switch-input', checked: @search[:with_cases] == '1' %>
                   <span class="custom-switch-indicator"></span>
-                  <span class="custom-switch-description">Include inactive</span>
-                </label>
+                  <span class="custom-switch-description">With open cases</span>
+                <% end %>
               </div>
+
             </fieldset>
           </div>
           <div class="card-footer text-right">
@@ -44,7 +43,6 @@
       </div>
     </div>
     <div class="col-9">
-      <%= render 'layouts/messages'%>
       <div class="card">
         <div class="table-responsive">
           <table class="table table-hover table-outline table-vcenter text-nowrap card-table">

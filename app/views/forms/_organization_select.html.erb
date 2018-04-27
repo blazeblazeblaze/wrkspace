@@ -1,0 +1,4 @@
+<div class="form-group">
+  <label class="form-label">Organization</label>
+  <%= f.collection_select :organization_id, current_account.organizations, :id, :name, { include_blank: "Select a company" }, { class: 'form-control custom-select'} %>
+</div>

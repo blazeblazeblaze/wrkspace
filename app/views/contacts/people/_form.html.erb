@@ -27,11 +27,8 @@
           <%= f.text_field :job_title, class: 'form-control', placeholder: 'Lead Accounting Associate' %>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="form-group">
-          <label class="form-label">Company</label>
-          <%= f.collection_select :organization_id, @current_account.organizations, :id, :name, { include_blank: "Select a company" }, { class: 'form-control custom-select'} %>
-        </div>
+      <div class="col-sm-6 col-md-6">
+        <%= render 'forms/organization_select', f: f %>
       </div>
     </div>
     <div class="card-footer text-right">
