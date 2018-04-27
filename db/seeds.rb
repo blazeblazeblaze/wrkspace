@@ -33,7 +33,7 @@ Contact.all.each do |contact|
       name: Faker::Company.bs,
       description: Faker::Company.bs,
       closed_at: [Faker::Date.backward(30), nil].sample,
-      assigned_user: Person.all.sample
+      assigned_user: User.all.sample
     )
   end
 end
