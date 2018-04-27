@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Contacts::OrganizationsController do
+  login_user
   before(:all) { create(:account) }
 
   describe 'GET /organizations' do

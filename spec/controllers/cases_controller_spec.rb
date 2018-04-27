@@ -1,12 +1,12 @@
 require 'rails_helper'
 
 describe CasesController do
+  login_user
+
   describe 'GET /cases' do
     let(:search_params) do
       {
-        case_search: {
-          name: 'foo'
-        }
+        case_search: { name: 'foo' }
       }
     end
 
@@ -81,7 +81,8 @@ describe CasesController do
 
     context 'when params are valid' do
       let(:contact) { create(:contact) }
-      let(:user) { create(:person) }
+      let(:user) { create(:user) }
+
       let(:request_params) do
         {
           case: {

@@ -33,7 +33,7 @@ class Contacts::OrganizationsController < ApplicationController
   def create
     @organization = Organization.new(organization_params)
 
-    contact = @current_account.contacts.build(contactable: @organization)
+    contact = current_account.contacts.build(contactable: @organization)
 
     if contact.save
       flash[:success] = 'Organization has been successfully created.'
@@ -50,6 +50,6 @@ class Contacts::OrganizationsController < ApplicationController
   end
 
   def search_params
-    (params[:organization_search] || {}).merge(user_id: 1)
+    (params[:organization_search] || {}).merge(account_id: current_account.id)
   end
 end

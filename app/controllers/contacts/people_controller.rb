@@ -32,7 +32,7 @@ class Contacts::PeopleController < ApplicationController
   def create
     @person = Person.new(person_params)
 
-    contact = @current_account.contacts.build(contactable: @person)
+    contact = current_account.contacts.build(contactable: @person)
 
     if contact.save
       flash[:success] = 'Contact has been successfully created.'
@@ -49,7 +49,6 @@ class Contacts::PeopleController < ApplicationController
   end
 
   def search_params
-    return {} unless params[:person_search]
-    params.require(:person_search).permit(:name, :organization).to_h
+    (params[:person_search] || {}).merge(account_id: current_account.id)
   end
 end

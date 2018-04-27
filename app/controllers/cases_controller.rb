@@ -46,6 +46,6 @@ class CasesController < ApplicationController
   end
 
   def search_params
-    params[:case_search] || {}
+    (params[:case_search] || {}).merge(account_id: current_account.id)
   end
 end
