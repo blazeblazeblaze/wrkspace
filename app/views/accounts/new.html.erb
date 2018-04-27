@@ -1,0 +1,46 @@
+<%= form_for(@signup_form, url: accounts_path, html: { class: 'card'} ) do |f| %>
+  <div class="card-body p-6">
+    <div class="card-title">Create new account</div>
+
+    <div class="form-group">
+      <%= f.label :account_name, 'Account name', class: 'form-label' %>
+      <div class="input-group">
+        <%= f.text_field :account_name, autofocus: true, placeholder: 'Account name', class: 'form-control' %>
+        <span class="input-group-append" id="basic-addon2">
+          <span class="input-group-text">.wrkspace.com</span>
+        </span>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email, class: 'form-label' %>
+      <%= f.email_field :email, placeholder: 'Enter email', autocomplete: "email", class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password, class: 'form-label' %>
+      <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation, class: 'form-label' %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Password Confirmation', class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <label class="custom-switch">
+        <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input">
+        <span class="custom-switch-indicator"></span>
+        <span class="custom-switch-description">I agree with terms and conditions</span>
+      </label>
+    </div>
+
+    <div class="form-footer">
+      <%= f.submit "Sign up", class: "btn btn-primary btn-block" %>
+    </div>
+  </div>
+<% end %>
+
+<div class="text-center text-muted">
+  Have account already? <%#= link_to('Sign in', new_user_session_path) %>
+</div>
