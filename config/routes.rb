@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    registrations: 'registrations/registrations'
+  }
   namespace :contacts do
     resources :people
     resources :organizations
@@ -14,5 +17,5 @@ Rails.application.routes.draw do
   resources :people
   resources :organizations
 
-  root to: "cases#index"
+  root to: 'cases#index'
 end
