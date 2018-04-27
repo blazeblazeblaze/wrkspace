@@ -38,7 +38,6 @@ gem 'jbuilder', '~> 2.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-gem 'virtus'
 group :test do
   gem 'simplecov', require: false
   gem 'shoulda-matchers', '~> 3.1'
