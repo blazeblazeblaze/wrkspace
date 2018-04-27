@@ -1,0 +1,38 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'card' }) do |f| %>
+  <div class="card-body p-6">
+    <div class="card-title">Login to your account</div>
+    <div class="form-group">
+      <%= f.label :email, class: 'form-label' %>
+      <%= f.email_field :email, autofocus: true, placeholder: 'Enter email', autocomplete: "email", class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password, class: 'form-label' %>
+      <%= f.password_field :password, autocomplete: "off", placeholder: 'Password', class: 'form-control' %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="form-group">
+        <%= f.label :remember_me, class: 'custom-control custom-checkbox' do %>
+          <%= f.check_box :remember_me, class: 'custom-control-input' %>
+          <span class="custom-control-label">Remember me</span>
+        <% end %>
+      </div>
+    <% end -%>
+
+    <div class="form-group">
+      <label class="form-label">
+        <%= render "devise/shared/links" %>
+      </label>
+    </div>
+
+
+    <div class="form-footer">
+      <%= f.submit "Sign in", class: "btn btn-primary btn-block" %>
+    </div>
+  </div>
+<% end %>
+
+<div class="text-center text-muted">
+  Don't have account yet? <%= link_to('Sign up', new_user_registration_path) %>
+</div>
