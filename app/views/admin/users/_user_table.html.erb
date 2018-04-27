@@ -1,0 +1,28 @@
+<table class="table card-table">
+  <thead>
+    <tr>
+      <th class="text-center w-1"><i class="far fa-user"></i></th>
+      <th>Name</th>
+      <th>Joined at</th>
+      <th>Confirmed at</th>
+      <th>Role</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr class="<%= 'suspended' if user.suspended_at %>">
+        <td class="text-center">
+          <%= render 'shared/avatar' %>
+        </td>
+        <td><%= user.email %></td>
+        <td><%= pretty_date(user.created_at) %></td>
+        <td><%= pretty_date(user.confirmed_at) %></td>
+        <td><%= user.admin? ? 'Admin' : 'User' %></td>
+        <td class="text-right">
+          <%= button_to 'Suspend', admin_user_suspend_path(user), method: :put, class: 'btn btn-secondary btn-sm', disabled: user.suspended_at, data: { confirm: 'This operation is irreversible. Do you wish to continue?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

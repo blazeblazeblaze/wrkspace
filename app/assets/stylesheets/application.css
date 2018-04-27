@@ -17,3 +17,8 @@
 .card-header-tabs {
   line-height: 1.5rem !important;
 }
+
+tr.suspended {
+  opacity: 0.2;
+  background: lightgray;
+}
