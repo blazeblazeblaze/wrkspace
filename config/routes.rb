@@ -4,6 +4,12 @@ Rails.application.routes.draw do
     resources :organizations
   end
 
+  namespace :admin do
+    resources :users, only: %i[index new create] do
+      put :suspend
+    end
+  end
+
   resources :cases
   resources :people
   resources :organizations
