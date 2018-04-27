@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe AccountHelper do
-  include Devise::TestHelpers
+  include Devise::Test::ControllerHelpers
 
   describe '#current_account' do
     context 'when user is signed in' do
