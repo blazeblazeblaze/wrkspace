@@ -4,6 +4,15 @@ facebook = Account.create(name: 'Facebook')
 
 facebook.users.create!(admin: true, email: 'admin@facebook.com', password: 'password', password_confirmation: 'password')
 
+facebook.users.each do |user|
+  10.times do
+    user.tasks.create!(
+      title: Faker::Company.bs,
+      completed_at: [Faker::Date.backward(30), nil, nil].sample
+    )
+  end
+end
+
 20.times do
   facebook.contacts.create!(contactable: Organization.new(name: Faker::Company.name))
 end
