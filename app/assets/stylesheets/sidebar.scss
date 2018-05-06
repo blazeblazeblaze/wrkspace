@@ -1,0 +1,18 @@
+.tasks-wrapper {
+  overflow: scroll;
+}
+
+.sidebar {
+  visibility: hidden;
+  &.visible {
+    visibility: visible !important;
+  }
+
+  .sidebar-container {
+    z-index: 5;
+    position: fixed;
+    height: 100%;
+    top: 0;
+    right: 0;
+  }
+}
