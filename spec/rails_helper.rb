@@ -11,7 +11,15 @@ require 'support/factory_bot'
 require 'support/devise'
 require 'support/shoulda_matchers'
 require 'simplecov'
-SimpleCov.start
+SimpleCov.start do
+  add_group "Models", "app/models"
+  add_group "Helpers", "app/helpers"
+  add_group "Controllers", "app/controllers"
+  add_group "Searches", "app/searches"
+  add_group "Forms", "app/forms"
+
+  add_filter '/spec/'
+end
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
