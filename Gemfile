@@ -39,6 +39,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :test do
+  gem 'database_cleaner'
   gem 'simplecov', require: false
   gem 'shoulda-matchers', '~> 3.1'
   gem 'factory_bot_rails'
