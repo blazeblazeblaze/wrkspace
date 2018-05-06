@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :api do
+    resources :tasks, only: %i[index create destroy update]
+  end
+
   resources :cases
   resources :people
   resources :organizations
