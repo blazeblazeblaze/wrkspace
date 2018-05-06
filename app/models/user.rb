@@ -3,6 +3,7 @@ class User < ApplicationRecord
     :trackable, :validatable, :registerable, :invitable, validate_on_invite: true
 
   belongs_to :account
+  has_many :tasks
 
   def suspend!
     return true if suspended_at
