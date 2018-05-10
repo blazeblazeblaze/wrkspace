@@ -5,10 +5,15 @@
   <%= csrf_meta_tags %>
 
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300i,400,400i,500,500i,600,600i,700,700i&amp;subset=latin-ext">
+
   <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
   <%= javascript_pack_tag 'index' %>
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -32,9 +37,9 @@
                 <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-sm btn-outline-primary' %>
               </div>
               <% if current_user.admin? %>
-              <div class="nav-item d-none d-md-flex">
-                <%= link_to 'Account', admin_users_path, class: 'btn btn-sm btn-outline-success' %>
-              </div>
+                <div class="nav-item d-none d-md-flex">
+                  <%= link_to 'Account', admin_users_path, class: 'btn btn-sm btn-outline-success' %>
+                </div>
               <% end %>
             </div>
             <a href="#" class="header-toggler d-lg-none ml-3 ml-lg-0" data-toggle="collapse" data-target="#headerMenuCollapse">
@@ -49,13 +54,17 @@
             <div class="col-lg order-lg-first">
               <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                 <li class="nav-item">
-                  <%= link_to contacts_people_path, class: "nav-link #{current_class?(contacts_people_path)}" do %>
-                  <i class="fas fa-users"></i> People</a>
-                  <% end %>
-                </li>
-                <li class="nav-item">
-                  <%= link_to contacts_organizations_path, class: "nav-link #{current_class?(contacts_organizations_path)}" do %>
-                  <i class="far fa-building"></i> Organizations</a>
+                  <%= link_to '#', class: "nav-link", data: { toggle: 'dropdown' } do %>
+                    <i class="fas fa-users"></i> Contacts</a>
+                    <div class="dropdown-menu dropdown-menu-arrow" x-placement="bottom-start" style="position: absolute; transform: translate3d(12px, 55px, 0px); top: 0px; left: 0px; will-change: transform;">
+                      <%= link_to 'People', contacts_people_path, class: "dropdown-item" %>
+                      <%= link_to 'Organizations', contacts_organizations_path, class: "dropdown-item" %>
+                      <div class="dropdown-divider"></div>
+                      <% current_account.circles.each do |circle| %>
+                        <%= link_to circle.title, contacts_root_path(contact_search: { circle_id: circle.id }), class: 'dropdown-item' %>
+                      <% end %>
+                      <%= link_to 'Add new circle', new_circle_path, class: 'dropdown-item' %>
+                    </div>
                   <% end %>
                 </li>
                 <li class="nav-item">

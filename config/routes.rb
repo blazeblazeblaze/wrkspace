@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :tasks, only: %i[index create destroy update]
   end
 
+  resources :circles, only: [:new, :edit, :update, :create]
   resources :cases
   resources :people
   resources :organizations
