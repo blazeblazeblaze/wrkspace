@@ -62,4 +62,14 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { :host => "http://localhost:3000" }
   config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = false
+    Bullet.bullet_logger = true
+    Bullet.console = true
+    Bullet.growl = false
+    Bullet.rails_logger = true
+    Bullet.add_footer = true
+  end
 end
