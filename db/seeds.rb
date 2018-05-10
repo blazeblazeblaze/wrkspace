@@ -4,6 +4,9 @@ facebook = Account.create(name: 'Facebook')
 
 facebook.users.create!(admin: true, email: 'admin@facebook.com', password: 'password', password_confirmation: 'password')
 
+facebook.circles.create!(title: 'Competitors')
+facebook.circles.create!(title: 'Suppliers')
+
 facebook.users.each do |user|
   10.times do
     user.tasks.create!(
