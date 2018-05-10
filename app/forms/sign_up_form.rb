@@ -15,7 +15,6 @@ class SignUpForm
 
   attr_reader :admin, :account
 
-
   def save
     return false unless valid?
 

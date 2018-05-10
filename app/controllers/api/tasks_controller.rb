@@ -1,7 +1,7 @@
 module Api
   class TasksController < ApplicationController
     skip_before_action :verify_authenticity_token
-    before_action :load_task, only: [:update, :destroy]
+    before_action :load_task, only: %i[update destroy]
 
     def index
       render json: user_tasks
@@ -23,7 +23,7 @@ module Api
 
     private
 
-    def render_success(status_code=200)
+    def render_success(status_code = 200)
       render json: @task, status: status_code
     end
 

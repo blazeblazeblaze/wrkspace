@@ -1,5 +1,5 @@
 class CirclesController < ApplicationController
-  before_action :load_circle, only: [:edit, :update]
+  before_action :load_circle, only: %i[edit update]
 
   def new
     @circle = Circle.new

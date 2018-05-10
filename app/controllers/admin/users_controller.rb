@@ -1,6 +1,6 @@
 module Admin
   class UsersController < Admin::BaseController
-    before_action :load_users, only: [:index, :suspend]
+    before_action :load_users, only: %i[index suspend]
 
     def index; end
 
@@ -33,9 +33,11 @@ module Admin
     end
 
     private
+
     def invitation_form_params
       params.require(:account_invitation_form).permit(
-        :email).merge(user_id: current_user.id)
+        :email
+      ).merge(user_id: current_user.id)
     end
 
     def load_users

@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   devise :confirmable, :database_authenticatable, :recoverable, :rememberable,
-    :trackable, :validatable, :registerable, :invitable, validate_on_invite: true
+         :trackable, :validatable, :registerable, :invitable, validate_on_invite: true
 
   belongs_to :account
   has_many :tasks
@@ -15,6 +15,6 @@ class User < ApplicationRecord
   end
 
   def inactive_message
-  	!suspended_at ? super : :suspended_account
+    !suspended_at ? super : :suspended_account
   end
 end
