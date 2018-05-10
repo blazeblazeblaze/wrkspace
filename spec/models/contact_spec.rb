@@ -5,6 +5,8 @@ RSpec.describe Contact do
     it { is_expected.to belong_to(:account) }
     it { is_expected.to belong_to(:contactable) }
     it { is_expected.to have_many(:cases) }
+    it { is_expected.to have_many(:circle_contacts) }
+    it { is_expected.to have_many(:circles) }
   end
 
   describe '#name' do

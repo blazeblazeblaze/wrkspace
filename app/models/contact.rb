@@ -1,4 +1,7 @@
 class Contact < ApplicationRecord
+  has_many :circle_contacts
+  has_many :circles, through: :circle_contacts
+  
   has_many :cases
   belongs_to :account
   belongs_to :contactable, polymorphic: true

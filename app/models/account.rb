@@ -1,4 +1,5 @@
 class Account < ApplicationRecord
+  has_many :circles
   has_many :users
   has_many :contacts
   has_many :organizations, through: :contacts, source: 'contactable', source_type: 'Organization'
