@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_03_010732) do
+ActiveRecord::Schema.define(version: 2018_05_09_055434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,23 @@ ActiveRecord::Schema.define(version: 2018_05_03_010732) do
     t.datetime "updated_at", null: false
     t.index ["assigned_user_id"], name: "index_cases_on_assigned_user_id"
     t.index ["contact_id"], name: "index_cases_on_contact_id"
+  end
+
+  create_table "circle_contacts", force: :cascade do |t|
+    t.bigint "circle_id", null: false
+    t.bigint "contact_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["circle_id"], name: "index_circle_contacts_on_circle_id"
+    t.index ["contact_id"], name: "index_circle_contacts_on_contact_id"
+  end
+
+  create_table "circles", force: :cascade do |t|
+    t.string "title", null: false
+    t.bigint "account_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["account_id"], name: "index_circles_on_account_id"
   end
 
   create_table "contacts", force: :cascade do |t|
