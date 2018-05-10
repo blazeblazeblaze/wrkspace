@@ -19,7 +19,7 @@ describe TaskSearch do
     end
 
     context 'given no user_id' do
-      subject { described_class.new() }
+      subject { described_class.new }
 
       it 'returns empty collection' do
         expect(subject.results).to eq []

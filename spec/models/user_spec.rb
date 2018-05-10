@@ -12,7 +12,7 @@ RSpec.describe User do
       it 'doesnt update user record' do
         expect do
           user.suspend!
-        end.not_to change{user}
+        end.not_to change { user }
       end
     end
 
@@ -20,7 +20,7 @@ RSpec.describe User do
       it 'sets suspended_at attribute' do
         expect do
           user.suspend!
-        end.to change{user.suspended_at}
+        end.to change { user.suspended_at }
       end
     end
   end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Registrations::RegistrationsController do
   before do
-    @request.env["devise.mapping"] = Devise.mappings[:user]
+    @request.env['devise.mapping'] = Devise.mappings[:user]
   end
 
   describe 'GET new' do

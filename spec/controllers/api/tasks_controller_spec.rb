@@ -10,7 +10,7 @@ describe Api::TasksController do
   end
 
   describe 'GET index' do
-    include_examples "json api"
+    include_examples 'json api'
     let!(:task) { create(:task, user: subject.current_user) }
 
     before do
@@ -33,14 +33,14 @@ describe Api::TasksController do
 
   describe 'POST create' do
     context 'when successfully created' do
-      it_behaves_like "json api"
+      it_behaves_like 'json api'
 
-      let(:task) {
+      let(:task) do
         {
           user_id: subject.current_user.id,
           title: ''
         }
-      }
+      end
       before { post :create, params: {} }
 
       it 'returns 201' do
@@ -54,7 +54,7 @@ describe Api::TasksController do
     end
 
     context 'when unsuccesfully created' do
-      it_behaves_like "json api"
+      it_behaves_like 'json api'
 
       before do
         allow_any_instance_of(Task).to receive(:save) { false }
@@ -74,17 +74,17 @@ describe Api::TasksController do
 
   describe 'PUT update' do
     let(:task) { create(:task, user: subject.current_user) }
-    let(:task_params) {
+    let(:task_params) do
       {
         id: task.id,
         task: {
           title: 'new_title'
         }
       }
-    }
+    end
 
     context 'when successfully updated' do
-      it_behaves_like "json api"
+      it_behaves_like 'json api'
 
       before { put :update, params: task_params }
 
@@ -99,7 +99,7 @@ describe Api::TasksController do
     end
 
     context 'when unsuccesfully updated' do
-      it_behaves_like "json api"
+      it_behaves_like 'json api'
 
       before do
         allow_any_instance_of(Task).to receive(:update) { false }
@@ -119,14 +119,14 @@ describe Api::TasksController do
 
   describe 'DELETE destroy' do
     let(:task) { create(:task, user: subject.current_user) }
-    let(:task_params) {
+    let(:task_params) do
       {
         id: task.id
       }
-    }
+    end
 
     context 'when successfully destroyed' do
-      it_behaves_like "json api"
+      it_behaves_like 'json api'
 
       before { delete :destroy, params: task_params }
 
@@ -140,7 +140,7 @@ describe Api::TasksController do
     end
 
     context 'when unsuccesfully destroyed' do
-      it_behaves_like "json api"
+      it_behaves_like 'json api'
 
       before do
         allow_any_instance_of(Task).to receive(:destroy) { false }
