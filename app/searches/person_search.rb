@@ -1,6 +1,7 @@
 class PersonSearch < Searchlight::Search
   def base_query
     Person
+      .includes(:organization)
       .joins(:contact)
       .where(contacts: { account_id: options[:account_id] })
   end
