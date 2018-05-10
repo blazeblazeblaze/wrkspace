@@ -1,0 +1,4 @@
+<div class="form-group">
+  <label class="form-label">Circle</label>
+  <%= f.collection_select :circle_id, current_account.circles, :id, :title, { include_blank: "Select a circle", selected: selected }, { class: 'form-control custom-select'} %>
+</div>
