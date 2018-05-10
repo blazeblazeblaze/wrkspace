@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     registrations: 'registrations/registrations'
   }
   namespace :contacts do
+    root to: 'contacts#index'
+    resources :contacts, only: [:update]
     resources :people
     resources :organizations
   end

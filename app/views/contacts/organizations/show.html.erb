@@ -17,6 +17,11 @@
         <div class="card-body">
         </div>
       </div>
+
+      <div class="card">
+        <%= render 'forms/circle_form', contact: @organization.contact %>
+      </div>
+
       <div class="card">
         <div class="card-header">
           <h3 class="card-title">People at <%= @organization.name %></h3>
