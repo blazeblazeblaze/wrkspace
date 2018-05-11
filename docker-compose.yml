@@ -1,0 +1,21 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.6
+    environment:
+      PGDATA: /tmp
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    command: ["bash", "-c", "rake db:setup && bundle exec puma -C config/puma.rb"]
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:

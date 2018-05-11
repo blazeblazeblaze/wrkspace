@@ -2,7 +2,8 @@ require 'faker'
 
 facebook = Account.create(name: 'Facebook')
 
-facebook.users.create!(admin: true, email: 'admin@facebook.com', password: 'password', password_confirmation: 'password')
+facebook.users.create!(admin: true, email: 'admin@facebook.com', password: 'password', password_confirmation: 'password', confirmed_at: DateTime.now)
+
 
 facebook.circles.create!(title: 'Competitors')
 facebook.circles.create!(title: 'Suppliers')

@@ -1,0 +1,9 @@
+.git
+.env
+tmp
+log
+
+.bundle
+
+node_modules
+public/assets
