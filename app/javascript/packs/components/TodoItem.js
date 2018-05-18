@@ -5,50 +5,48 @@ const TodoItem = class extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onCompletedChange = this.onCompletedChange.bind(this);
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.onDelete = this.onDelete.bind(this);
-    this.onTitleSave = this.onTitleSave.bind(this);
-    this.handleEnterKeyPress = this.handleEnterKeyPress.bind(this);
-  }
-
-  handleEnterKeyPress(event) {
-    if(event.which === 13){
-      event.target.blur();
+    this.state = {
+      title: props.todo.title || ''
     }
-  }
-
-  onCompletedChange(event) {
-    let { todo, onComplete } = this.props;
-    onComplete(todo);
+    this.onTitleChange = this.onTitleChange.bind(this);
+    // this.handleBlur = this.handleBlur.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   onTitleChange(event) {
-    let { todo, onTitleChange } = this.props;
-    onTitleChange(todo.id, event.target.value);
+    this.setState({ title: event.target.value })
   }
 
-  onDelete(event) {
-    event.preventDefault();
+  // handleBlur = e => {
+  //   console.log('HANDLING BLUR...')
+  //   const { todo, onTitleSave } = this.props;
+  //   onTitleSave({
+  //     id: todo.id,
+  //     title: e.target.value
+  //   })
+  // }
 
-    let { todo, onDelete } = this.props;
-    onDelete(todo);
-  }
+  handleSubmit = e => {
+    const text = e.target.value.trim()
+    const { todo, onTitleSave } = this.props;
 
-  onTitleSave() {
-    let { todo, onTitleSave } = this.props;
-    onTitleSave(todo);
+    if (e.which === 13) {
+      onTitleSave(
+        todo.id,
+        e.target.value
+      )
+    }
   }
 
   render() {
-    const { isVisible, todo } = this.props;
+    const { todo, onDelete, onComplete } = this.props;
 
     return (
       <label className="custom-control custom-checkbox">
         <input
           type="checkbox"
           className="custom-control-input"
-          onChange={this.onCompletedChange}
+          onChange={() => onComplete(todo.id, todo.completed_at) }
           checked={!!todo.completed_at} />
 
         <span className="custom-control-label">
@@ -58,15 +56,14 @@ const TodoItem = class extends React.Component {
                 type="text"
                 className="form-control form-control-sm"
                 placeholder="Task title"
-                value={todo.title}
-                disabled={!!todo.completed_at}
                 onChange={this.onTitleChange}
-                onBlur={this.onTitleSave}
-                onKeyPress={this.handleEnterKeyPress}
+                value={this.state.title}
+                disabled={!!todo.completed_at}
+                onKeyDown={this.handleSubmit}
               />
             </div>
             <span className="col-auto">
-              <a href="#" className="icon" onClick={this.onDelete}>
+              <a href="#" className="icon" onClick={(e) => {e.preventDefault(); onDelete(todo.id) }}>
                 <i className="far fa-trash-alt"></i>
               </a>
             </span>
@@ -79,7 +76,6 @@ const TodoItem = class extends React.Component {
 
 TodoItem.propTypes = {
   onComplete: PropTypes.func.isRequired,
-  onTitleChange: PropTypes.func.isRequired,
   onDelete: PropTypes.func.isRequired,
   onTitleSave: PropTypes.func.isRequired,
   todo: PropTypes.object.isRequired

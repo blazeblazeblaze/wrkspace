@@ -4,9 +4,15 @@
   "dependencies": {
     "@rails/webpacker": "3.4",
     "babel-preset-react": "^6.24.1",
+    "normalizr": "^3.2.4",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
-    "react-dom": "^16.3.2"
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "redux": "^4.0.0",
+    "redux-logger": "^3.0.6",
+    "redux-promise": "^0.5.3",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"

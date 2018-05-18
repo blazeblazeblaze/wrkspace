@@ -1,11 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
-import App from './components/App'
+import Root from './components/Root'
+
+import configureStore from './configureStore';
+
+const store = configureStore()
 
 document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(
-    <App />,
+    <Root store={store} />,
     document.getElementById('todolist')
   )
 })

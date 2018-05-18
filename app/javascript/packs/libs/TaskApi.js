@@ -20,17 +20,17 @@ export default class TaskApi {
     });
   }
 
-  createItem(item) {
+  createItem() {
     return _makeRequest({
       method: 'POST',
       endpoint: BASE_URL
     });
   }
 
-  deleteItem(item) {
+  deleteItem(id) {
     return _makeRequest({
       method: 'DELETE',
-      endpoint: `${BASE_URL}/${item.id}`
+      endpoint: `${BASE_URL}/${id}`
     });
   }
 

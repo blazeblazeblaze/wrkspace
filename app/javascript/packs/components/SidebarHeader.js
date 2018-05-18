@@ -6,8 +6,11 @@ const SidebarHeader = ({title, onClose}) => {
     <div className="card-header">
       <h3 className="card-title">{title}</h3>
       <div className="card-options">
-        <a href="#" onClick={onClose} className="card-options-remove">
-          <i className="far fa-times-circle"></i>
+        <a
+          href="#"
+          onClick={ (e) => { e.preventDefault(); onClose() } }
+          className="card-options-remove">
+            <i className="far fa-times-circle"></i>
         </a>
       </div>
     </div>
