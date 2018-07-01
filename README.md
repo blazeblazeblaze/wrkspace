@@ -1,4 +1,4 @@
-![Logotype](https://bitbucket.org/blazejhadzik/wrkspace/raw/master/logo.png)
+![Logotype](logo.png)
 
 # wrkspace.io
 
